@@ -26,7 +26,7 @@ const userJoiProps = {
 
     user_type:
         Joi.string()
-            .valid(Object.values(userTypes))
+            .valid(...Object.values(userTypes))
 };
 
 const {
@@ -46,5 +46,13 @@ module.exports = {
         email: email.required(),
         password: password.required(),
         user_type: user_type.required()
+    }),
+
+    updateUser: Joi.object({
+        first_name,
+        last_name,
+        email,
+        password,
+        user_type
     })
 };

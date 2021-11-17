@@ -7,6 +7,7 @@ const {
     MONGO_CONNECT_URL
 } = require('./configs/config');
 
+const {errorStatuses} = require('./constants');
 const {userRouter} = require('./routers');
 
 const app = express();
@@ -19,7 +20,7 @@ app.use('/users', userRouter);
 // eslint-disable-next-line no-unused-vars
 app.use('*', (err, req, res, next) => {
     res
-        .status(err.status || 500)
+        .status(err.status || errorStatuses.code_500)
         .json({msg: err.message});
 });
 
