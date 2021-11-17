@@ -41,11 +41,11 @@ const userSchema = new Schema({
         enum: Object.values(userTypes)
     }
 }, {
-    _id: false,
+    id: false,
     timestamps: true,
     versionKey: false,
     toObject: {virtuals: true},
-    toJSON: {virtuals: true}
+    toJSON: {virtuals: true},
 });
 
 module.exports = model(modelNames.USER, userSchema);

@@ -66,7 +66,7 @@ module.exports = {
         try {
             const {params: {userId}} = req;
 
-            await User.deleteOne({id: userId});
+            await User.deleteOne({_id: userId});
 
             res
                 .sendStatus(errorStatuses.code_204);

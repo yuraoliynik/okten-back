@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const {
     errorMessages,
     errorStatuses
@@ -51,6 +53,18 @@ module.exports = {
     checkUserId: async (req, res, next) => {
         try {
             const {params: {userId}} = req;
+
+            const isValidUserId = mongoose
+                .Types
+                .ObjectId
+                .isValid(userId);
+
+            if (!isValidUserId) {
+                return next({
+                    message: errorMessages.USER_ID_DOES_NOT_VALID,
+                    status: errorStatuses.code_400
+                });
+            }
 
             const foundUser = await User
                 .findById(userId)

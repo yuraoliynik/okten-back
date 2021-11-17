@@ -15,6 +15,9 @@ const app = express();
 mongoose.connect(MONGO_CONNECT_URL)
     .then(() => console.log('Mongo was connected successfully'));
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.use('/users', userRouter);
 
 // eslint-disable-next-line no-unused-vars

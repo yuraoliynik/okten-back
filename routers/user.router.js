@@ -8,18 +8,19 @@ userRouter.get(
     '/',
     userController.getAllUsers
 );
+userRouter.post(
+    '/',
+    userMiddleware.isBodyValid(userValidator.createUser),
+    userMiddleware.checkUserName,
+    userController.createUser
+);
 
 userRouter.get(
     '/:userId',
     userMiddleware.checkUserId,
     userController.getUserById
 );
-userRouter.post(
-    '/:userId',
-    userMiddleware.isBodyValid(userValidator.createUser),
-    userMiddleware.checkUserName,
-    userController.createUser
-);
+
 userRouter.put(
     '/:userId',
     userMiddleware.isBodyValid(userValidator.updateUser),

@@ -21,7 +21,7 @@ const userJoiProps = {
 
     password:
         Joi.string()
-            .length(8)
+            .min(8)
             .regex(regexps.PASSWORD),
 
     user_type:
