@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 const {
@@ -14,6 +15,8 @@ const app = express();
 
 mongoose.connect(MONGO_CONNECT_URL)
     .then(() => console.log('Mongo was connected successfully'));
+
+app.use(cors({origin: 'http://localhost:3000'}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
