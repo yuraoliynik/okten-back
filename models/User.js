@@ -10,17 +10,20 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        minlength: 2
     },
     first_name: {
         type: String,
         default: '',
-        trim: true
+        trim: true,
+        minlength: 2
     },
     last_name: {
         type: String,
         default: '',
-        trim: true
+        trim: true,
+        minlength: 2
     },
     email: {
         type: String,
@@ -42,7 +45,7 @@ const userSchema = new Schema({
     }
 }, {
     id: false,
-    timestamps: true,
+    timestamps: false,
     versionKey: false,
     toObject: {virtuals: true},
     toJSON: {virtuals: true},

@@ -7,13 +7,16 @@ const {
 
 const userJoiProps = {
     username:
-        Joi.string(),
+        Joi.string()
+            .min(2),
 
     first_name:
-        Joi.string(),
+        Joi.string()
+            .min(2),
 
     last_name:
-        Joi.string(),
+        Joi.string()
+            .min(2),
 
     email:
         Joi.string()
@@ -49,6 +52,7 @@ module.exports = {
     }),
 
     updateUser: Joi.object({
+        username,
         first_name,
         last_name,
         email,
